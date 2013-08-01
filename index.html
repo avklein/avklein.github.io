@@ -27,7 +27,12 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>I'd like to start off by using some mathematical puzzles about ants as a jumping-off point for discussing different 
+        <h2>
+<a name="a-question-of-ants" class="anchor" href="#a-question-of-ants"><span class="octicon octicon-link"></span></a>A Question Of Ants</h2>
+
+<p>2013 August 1</p>
+
+<p>I'd like to start off by using some mathematical puzzles about ants as a jumping-off point for discussing different 
 programming approaches.</p>
 
 <p>In the May 2013 issue of the Communications of the ACM [CACM, Vol. 56 No. 5, Page 104], <a href="http://www.math.dartmouth.edu/%7Epw/">Peter Winkler</a> 
@@ -55,6 +60,47 @@ poses three questions about the behavior of some idealized ants. The basic ant p
 }
 </code></pre>
 
+<p>The finished program is <a href="https://github.com/avklein/Ants/blob/master/SimplestAnts.java">SimplestAnts.java</a>. When we run it with 6 ants we get output that looks like this (the full output file is <a href="https://github.com/avklein/Ants/blob/master/SimplestAnts_random_output_1.txt">here</a>).</p>
+
+<pre><code>Created 6 ants with speed +/- 1.0 cm./sec. on a 100 cm. stick
+
+     initial   initial
+ Ant position  velocity
+  0    10.0    -1.0
+  1    13.0     1.0
+  2    18.0    -1.0
+  3    27.0    -1.0
+  4    43.0    -1.0
+  5    53.0     1.0
+
+    Time    Ant positions
+    0.0:    10.0  13.0  18.0  27.0  43.0  53.0
+    0.5:     9.5  13.5  17.5  26.5  42.5  53.5
+    1.0:     9.0  14.0  17.0  26.0  42.0  54.0
+    1.5:     8.5  14.5  16.5  25.5  41.5  54.5
+    2.0:     8.0  15.0  16.0  25.0  41.0  55.0
+    2.5:     7.5  15.5==15.5  24.5  40.5  55.5 &lt;&lt;&lt;&lt; ants 1 and 2 collide
+    3.0:     7.0  15.0  16.0  24.0  40.0  56.0
+    3.5:     6.5  14.5  16.5  23.5  39.5  56.5
+    4.0:     6.0  14.0  17.0  23.0  39.0  57.0
+    4.5:     5.5  13.5  17.5  22.5  38.5  57.5
+    5.0:     5.0  13.0  18.0  22.0  38.0  58.0
+    5.5:     4.5  12.5  18.5  21.5  37.5  58.5
+    6.0:     4.0  12.0  19.0  21.0  37.0  59.0
+    6.5:     3.5  11.5  19.5  20.5  36.5  59.5
+    7.0:     3.0  11.0  20.0==20.0  36.0  60.0 &lt;&lt;&lt;&lt; ants 2 and 3 collide
+    7.5:     2.5  10.5  19.5  20.5  35.5  60.5
+    8.0:     2.0  10.0  19.0  21.0  35.0  61.0
+    8.5:     1.5   9.5  18.5  21.5  34.5  61.5
+    9.0:     1.0   9.0  18.0  22.0  34.0  62.0
+    9.5:     0.5   8.5  17.5  22.5  33.5  62.5
+   10.0:    ----   8.0  17.0  23.0  33.0  63.0 &lt;&lt;&lt;&lt; ant 0 falls off
+   10.5:    ----   7.5  16.5  23.5  32.5  63.5      the left edge
+. . .
+</code></pre>
+
+<hr><p><em>Coming soon!</em></p>
+
 <h3>
 <a name="ants-as-objects" class="anchor" href="#ants-as-objects"><span class="octicon octicon-link"></span></a>Ants as Objects</h3>
 
@@ -75,38 +121,6 @@ poses three questions about the behavior of some idealized ants. The basic ant p
 
 <h3>
 <a name="other-peoples-ants" class="anchor" href="#other-peoples-ants"><span class="octicon octicon-link"></span></a>Other People's Ants</h3>
-
-<h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
       </section>
     </div>
 
