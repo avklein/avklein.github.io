@@ -99,28 +99,69 @@ poses three questions about the behavior of some idealized ants. The basic ant p
 . . .
 </code></pre>
 
-<hr><p><em>Coming soon!</em></p>
+<hr><p><em>Coming soon / Work In Progress</em></p>
 
 <h3>
 <a name="ants-as-objects" class="anchor" href="#ants-as-objects"><span class="octicon octicon-link"></span></a>Ants as Objects</h3>
 
+<p>Where we discuss the design of the <a href="https://github.com/avklein/Ants/blob/master/Ant.java">Ant</a> class.</p>
+
 <h3>
 <a name="when-ants-collide" class="anchor" href="#when-ants-collide"><span class="octicon octicon-link"></span></a>When Ants Collide</h3>
 
-<h3>
-<a name="being-discrete" class="anchor" href="#being-discrete"><span class="octicon octicon-link"></span></a>Being Discrete</h3>
+<p>Why did the first two programs force the Ants to be placed on whole-number positions?
+It was a trick: since all of the Ants move at 1.0 cm./sec., that placement will cause all Ant collisions to take place on positions 0.5, 1.5, 2.5 ... 99.5, and therefore all collisions will occur 0.5, 1.5, 2.5 ... seconds into the simulation. Bottom line: this allows us to run the simulation with a fixed time step of 0.5 seconds, and to know that we can check for collisions just at the beginning or end of a time step.</p>
+
+<p>What if we allowed the Ants to occupy arbitrary positions? Then we would not be able to use a 0.5-second time step, since some Ants might be much closer. If we wanted to just use the same sort of fixed time step as before, then we'd be stuck using a very tiny time step which would be very wasteful of machine resources. A better approach is to use a variable time step. In fact, in this world of uniformly moving Ants nothing actually happens until an Ant collides with another Ant or falls off the stick. For the set of all adjoining Ants we could calculate the minimum collision time and use it as the value of the next time step. This code (not yet tested) illustrates the idea:</p>
+
+<pre><code>    /**
+     * Determine if two Ants will collide with each other,
+     * and if so, calculate how long until it happens.
+     * 
+     * @param other another Ant object
+     * @return number of seconds until the two Ants collide.
+     * If ants are moving in opposite directions then
+     * the collision occurred in the past, so it is valid
+     * to return a negative number.
+     * If ants are moving in the same direction then
+     * there won't be a collision. Indicate this by
+     * returning a large negative number.
+     */
+    public double timeToCollision(Ant otherAnt) {
+
+        double deltaV = otherAnt.getV() - getV() ;
+        double deltaX = otherAnt.getX() - getX();
+        if( Math.abs(deltaV) &lt; epsV ) {
+            // the ants are moving in the same direction
+            return -100.0/epsV;
+        } else {
+            return -deltaX/deltaV;
+        }
+    }
+</code></pre>
 
 <h3>
 <a name="strategic-ants" class="anchor" href="#strategic-ants"><span class="octicon octicon-link"></span></a>Strategic Ants</h3>
 
+<p>We know we have to deal with Ants that move on a line segment and also with Ants that move on a ring. Calculating the distance between two Ants will be different: a pair of Ants on the line at positions 1.0 and 99.0 are 98.0 cm. apart, but on the ring they are both 98.0 and 2.0 cm. apart, depending on direction. It would be nice to apply this as an external strategy, but is it possible?</p>
+
 <h3>
-<a name="ant-collections" class="anchor" href="#ant-collections"><span class="octicon octicon-link"></span></a>Ant Collections</h3>
+<a name="generic-ants" class="anchor" href="#generic-ants"><span class="octicon octicon-link"></span></a>Generic Ants</h3>
+
+<p>Where we consider if we can develop a generalized simulation for interacting actors. The simulation object would contain the actors and the global time. It would run by applying a step() operation to the actors, something like <code>actor.evolve(timeStep)</code>. The key is whether we can usefully separate the simulation from the actors, without unduly constraining either.</p>
 
 <h3>
 <a name="gold-plated-ants" class="anchor" href="#gold-plated-ants"><span class="octicon octicon-link"></span></a>Gold-plated Ants?</h3>
 
+<p>We could extend Ants to move in two dimensions, to have different velocities, to have different masses, to have a shape and size, etc. When is that a good idea, and when isn't it?</p>
+
 <h3>
 <a name="other-peoples-ants" class="anchor" href="#other-peoples-ants"><span class="octicon octicon-link"></span></a>Other People's Ants</h3>
+
+<p>Where we consider other directions:
+Discrete-event simulation
+Physics engines for games
+Big simulation systems</p>
       </section>
     </div>
 
